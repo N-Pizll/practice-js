@@ -6,16 +6,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
   //  Objects
-  
+  let nowYear = new Date().toLocaleDateString('fa-IR')
+
+
   function HTMLUI() {}
   // displays the latest 20 years in the selet
   HTMLUI.prototype.displayYears = function () {
     // max and min years
     const max = new Date().getFullYear();
     const min = max - 20;
-    // console.log(max);
-    // console.log(min);
-  
+    
+    
+    // Solar year
+   let nowYear = new Date().toLocaleDateString('fa-IR')
     // Generate the list with the latest 20 years
     const selectYears = document.getElementById('years')
     // print the values
@@ -28,3 +31,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
   
+  console.log(nowYear);
