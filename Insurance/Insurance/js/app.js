@@ -5,16 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
   html.displayYears();
 });
 
+const form = document.querySelector("#request-quote");
+const yearSelector = document.querySelector("#year");
+
+form.addEventListener("submit", calcPrice);
 //  Objects
 let nowYear = new Date().toLocaleDateString("fa-IR");
-
+// ========================================
 function HTMLUI() {}
 // displays the latest 20 years in the selet
 HTMLUI.prototype.displayYears = function () {
   // max and min years
   const max = new Date().getFullYear();
   const min = max - 20;
-
 
   // Generate the list with the latest 20 years
   const selectYears = document.getElementById("years");
@@ -27,26 +30,50 @@ HTMLUI.prototype.displayYears = function () {
     selectYears.appendChild(option);
   }
 };
-
-
-
+// ========================================
 function yearss() {
   // Solar year
   let nowYear = new Date().toLocaleDateString("fa-IR");
-  console.log(nowYear);
   nowYear = nowYear.slice(0, 4);
   console.log(nowYear);
   let maxYear = nowYear;
-
+const selectSall = document.getElementById('years')
   let minYear = maxYear - 20;
-  console.log(maxYear, minYear);
 
   for (let i = maxYear; i >= minYear; i--) {
     const option = document.createElement("option");
     option.value = i;
     option.innerText = `سال ${i}`;
-    selectYears.append(option);
+    selectSall.appendChild(option);
   }
 }
 
-yearss().getElementById('years')
+yearss()
+// ========================================
+function calcPrice(x) {
+  x
+  //  reading value form the form
+
+  const make = document.getElementById("make").value;
+  const yearsss = selectSall.value;
+  const level = document.querySelector('input[name="level"]:checked')?.value;
+
+  // check the value of fields are correct
+  if (make === "" || yearsss === "" || level === "") {
+    displayerror("Nabinamet");
+  } else {
+    console.warn("Naaaaaaaa Khosham omad");
+  }
+}
+
+
+// ========================================
+function displayerror(msg) {
+  // creat messge box
+  const messagebox = document.createElement("div");
+  messagebox.classList = "error";
+  messagebox.innerText = msg;
+
+  form.insertAdjacentElement('beforebegin'.messagebox)
+}
+
